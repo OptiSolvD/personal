@@ -23,7 +23,8 @@ export default function GalleryPage() {
         return;
       }
 
-      const res = await fetch('/api/memories', {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE}/api/memories`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +58,8 @@ export default function GalleryPage() {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`/api/memories/${id}`, {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE}/api/memories/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -100,7 +102,8 @@ export default function GalleryPage() {
       formData.append('title', updatedMemory.title);
       formData.append('description', updatedMemory.description);
 
-      const res = await fetch(`/api/memories/${updatedMemory._id}`, {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE}/api/memories/${updatedMemory._id}`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,

@@ -74,7 +74,8 @@ export default function UploadPage() {
       formData.append('title', title || 'Untitled');
       formData.append('description', description || '');
 
-      const res = await fetch('/api/memories/upload', {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL;
+      const res = await fetch(`${API_BASE}/api/memories/upload`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

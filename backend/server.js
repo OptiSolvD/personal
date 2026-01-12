@@ -41,7 +41,9 @@ const authRoutes = require('./routes/authRoutes');
 const jwtAuth = require('./middleware/jwtAuth');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 
 // Public routes (no auth required)

@@ -6,7 +6,8 @@ function getSavedAuth() {
 
 async function doUpload(fd, extraHeaders = {}) {
   const headers = Object.assign({}, extraHeaders);
-  return fetch('/api/memories/upload', {
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
+  return fetch(`${API_BASE}/api/memories/upload`, {
     method: 'POST',
     body: fd,
     headers,
